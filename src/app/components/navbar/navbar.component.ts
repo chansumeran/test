@@ -14,7 +14,7 @@ export class NavbarComponent {
   navigationRoutes : { name: string, link: string }[] = [
     {
       name: 'Home',
-      link: '/'
+      link: '/home'
     },
     {
       name: 'Challenge 1',
