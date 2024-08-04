@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { NgClass } from "@angular/common";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-challenge-two',
@@ -13,6 +14,8 @@ import { NgClass } from "@angular/common";
   styleUrl: './challenge-two.component.css'
 })
 export class ChallengeTwoComponent {
+
+  authService = inject(AuthService);
 
   inputText!: string;
   generatedMumble: string = '';

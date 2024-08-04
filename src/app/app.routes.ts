@@ -4,13 +4,11 @@ import { ChallengeTwoComponent } from "./components/challenge-two/challenge-two.
 import { HomeComponent } from "./components/home/home.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { LoginComponent } from "./components/login/login.component";
+import { ChallengeThreeComponent } from "./components/challenge-three/challenge-three.component";
 
 export const routes: Routes = [
   {
-    path: '', redirectTo: '/home', pathMatch: 'full'
-  },
-  {
-    path: 'home', component: HomeComponent
+    path: '', component: HomeComponent
   },
   {
     path: 'register', component: RegisterComponent
@@ -23,5 +21,8 @@ export const routes: Routes = [
   },
   {
     path: 'challenge-two', component: ChallengeTwoComponent
+  },
+  {
+    path: 'challenge-three', component: ChallengeThreeComponent
   }
 ];

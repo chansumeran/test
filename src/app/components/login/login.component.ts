@@ -15,6 +15,8 @@ import { Router } from "@angular/router";
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+
+
   fb = inject(FormBuilder);
   http = inject(HttpClient);
   authService = inject(AuthService);
@@ -26,15 +28,20 @@ export class LoginComponent {
   });
 
   onSubmit() {
-    this.http.post<{ user: UserInterface }>('https://api.realworld.io/api/users/login', {
-      user: this.form.getRawValue(),
-    }).subscribe((response) => {
-      console.log('response', response);
-      localStorage.setItem('token', response.user.token);
-      this.authService.currentUserSig.set(response.user);
-      this.router.navigateByUrl('/')
-    })
+    this.http
+      .post<{ user: UserInterface }>('https://api.realworld.io/api/users/login', {
+        user: this.form.getRawValue(),
+      })
+      .subscribe((response) => {
+        console.log('response', response);
+        localStorage.setItem('token', response.user.token);
+        this.authService.currentUserSig.set(response.user);
+        this.router.navigateByUrl('/')
+      })
 
   }
 
+  navigateRegister() {
+    this.router.navigateByUrl('/register')
+  }
 }

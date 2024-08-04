@@ -1,8 +1,32 @@
 <div class="app-root">
 
-  <header class="p-5 bg-gray-200">
-    <app-navbar />
-  </header>
+  <!--  render this ONLY when logged in -->
+  @if (authService.currentUserSig()) {
+    <header class="p-5 bg-gray-200">
+      <nav class="flex justify-around items-center p-1">
+        <!--  logo-->
+        <p class="text-2xl font-mono">CICT</p>
+
+        <!--  navigations-->
+        <ul class="flex space-x-5 text-sm font-mono">
+
+          @for (route of navigationRoutes; track route) {
+
+            <a [routerLink]="route.link">
+              <li
+                class="w-32 p-2 text-center rounded-lg hover:bg-gray-500 hover:text-white transition duration-500 ease-in-out">
+                {{ route.name }}
+              </li>
+            </a>
+          }
+
+        </ul>
+
+        <!--  logout-->
+        <p class="font-mono px-3 py-2 text-sm cursor-pointer rounded-lg hover:bg-red-200 transition duration-500 ease-in-out" (click)="logout()">Logout</p>
+      </nav>
+    </header>
+  }
 
   <div class="grow">
     <router-outlet></router-outlet>

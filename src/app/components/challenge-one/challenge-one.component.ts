@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NgClass } from "@angular/common";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-challenge-one',
@@ -11,6 +12,10 @@ import { NgClass } from "@angular/common";
   styleUrl: './challenge-one.component.css'
 })
 export class ChallengeOneComponent {
+  authService = inject(AuthService);
+
+  ngOnInit(): void {}
+
   numbers : { value: number }[] = [
     { value: 1 },
     { value: 2 },

@@ -1,32 +1,33 @@
-<div class="flex flex-col space-y-8">
+@if (authService.currentUserSig()) {
+  <div class="flex flex-col space-y-8">
 
-  <div class="text-center mt-20 space-y-2">
-    <h1 class="text-4xl text-gray-600 font-semibold">Challenge 1:</h1>
-    <p class="text-xl text-gray-500 font-normal">Is the number even?</p>
-  </div>
+    <div class="text-center mt-20 space-y-2">
+      <h1 class="text-4xl text-gray-600 font-semibold">Challenge 1:</h1>
+      <p class="text-xl text-gray-500 font-normal">Is the number even?</p>
+    </div>
 
-  <div class="flex flex-col justify-center items-center p-8 space-y-8">
+    <div class="flex flex-col justify-center items-center p-8 space-y-8">
 
-    <!--  number container-->
-    <div class="flex space-x-8">
+      <!--  number container-->
+      <div class="flex space-x-8">
 
-      @for (number of numbers; track number) {
-        <div
-          class="bg-gray-200 p-3 w-16 h-16 flex justify-center items-center rounded-full border border-gray-400 shadow-sm transition duration-500 ease-in-out"
-          [ngClass]="{'bg-yellow-200': isClicked && isEven(number.value)}"
-        >
-          <span class="text-lg">{{ number.value }}</span>
-        </div>
-      }
+        @for (number of numbers; track number) {
+          <div
+            class="bg-gray-200 p-3 w-16 h-16 flex justify-center items-center rounded-full border border-gray-400 shadow-sm transition duration-500 ease-in-out"
+            [ngClass]="{'bg-yellow-200': isClicked && isEven(number.value)}"
+          >
+            <span class="text-lg">{{ number.value }}</span>
+          </div>
+        }
+
+      </div>
+
+      <!--  button-->
+      <button (click)="toggleColor()" class="bg-cyan-50 px-4 py-2 rounded-lg border border-cyan-400 shadow-sm hover:bg-cyan-100 transition duration-500 ease-in-out">
+        Click me
+      </button>
 
     </div>
 
-    <!--  button-->
-    <button (click)="toggleColor()" class="bg-cyan-50 px-4 py-2 rounded-lg border border-cyan-400 shadow-sm hover:bg-cyan-100 transition duration-500 ease-in-out">
-      Click me
-    </button>
-
   </div>
-
-
-</div>
+}

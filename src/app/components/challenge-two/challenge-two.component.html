@@ -1,46 +1,49 @@
-<div class="flex flex-col space-y-8">
+@if (authService.currentUserSig()) {
+  <div class="flex flex-col space-y-8">
 
-  <div class="text-center mt-20 space-y-2">
-    <h1 class="text-4xl text-gray-600 font-semibold">Challenge 2:</h1>
-    <p class="text-xl text-gray-500 font-normal">Mumble, mumbles, mumbles...</p>
-  </div>
-
-  <div class="flex flex-col justify-center items-center p-8 space-y-8">
-
-    <div class="flex space-x-5">
-      <label class="text-lg" for="mumble">Enter text:</label>
-      <input
-        [(ngModel)]="inputText"
-        class="border px-3 py-1 rounded-lg"
-        id="mumble"
-        type="text"
-      >
-
-      <div class="flex gap-2">
-        <button
-          (click)="generateMumble()"
-          class="bg-cyan-50 px-4 py-1 rounded-lg border border-cyan-400 shadow-sm hover:bg-cyan-100 transition duration-500 ease-in-out"
-        >
-          Generate
-        </button>
-        <button
-          (click)="clearInput()"
-          class="bg-cyan-50 px-4 py-1 rounded-lg border border-cyan-400 shadow-sm hover:bg-cyan-100 transition duration-500 ease-in-out"
-        >
-          Clear
-        </button>
-      </div>
+    <div class="text-center mt-20 space-y-2">
+      <h1 class="text-4xl text-gray-600 font-semibold">Challenge 2:</h1>
+      <p class="text-xl text-gray-500 font-normal">Mumble, mumbles, mumbles...</p>
     </div>
 
-    <p>Enter a text to be <i>mumbled</i> and click the generate button when done. Should you wish to clear the input, click "Clear".</p>
+    <div class="flex flex-col justify-center items-center p-8 space-y-8">
 
-    @if (generatedMumble) {
-      <p [ngClass]="isSuccess ? 'bg-green-100 text-green-500 px-3 py-1 rounded-md' : 'bg-red-100 text-red-500 px-3 py-1 rounded-md'">
-        {{ generatedMumble }}
-      </p>
-    }
+      <div class="flex space-x-5">
+        <label class="text-lg" for="mumble">Enter text:</label>
+        <input
+          [(ngModel)]="inputText"
+          class="border px-3 py-1 rounded-lg"
+          id="mumble"
+          type="text"
+        >
+
+        <div class="flex gap-2">
+          <button
+            (click)="generateMumble()"
+            class="bg-cyan-50 px-4 py-1 rounded-lg border border-cyan-400 shadow-sm hover:bg-cyan-100 transition duration-500 ease-in-out"
+          >
+            Generate
+          </button>
+          <button
+            (click)="clearInput()"
+            class="bg-cyan-50 px-4 py-1 rounded-lg border border-cyan-400 shadow-sm hover:bg-cyan-100 transition duration-500 ease-in-out"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <p>Enter a text to be <i>mumbled</i> and click the generate button when done. Should you wish to clear the input, click "Clear".</p>
+
+      @if (generatedMumble) {
+        <p [ngClass]="isSuccess ? 'bg-green-100 text-green-500 px-3 py-1 rounded-md' : 'bg-red-100 text-red-500 px-3 py-1 rounded-md'">
+          {{ generatedMumble }}
+        </p>
+      }
+
+    </div>
+
 
   </div>
 
-
-</div>
+}

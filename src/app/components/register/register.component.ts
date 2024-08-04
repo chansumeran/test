@@ -27,13 +27,18 @@ export class RegisterComponent {
   })
 
   onSubmit(): void {
-    this.http.post<{user: UserInterface}>('https://api.realworld.io/api/users', {
+    this.http.post<{user: UserInterface}>(
+      'https://api.realworld.io/api/users', {
       user: this.form.getRawValue(),
     }).subscribe((response) => {
       console.log('response', response);
       localStorage.setItem('token', response.user.token);
       this.authService.currentUserSig.set(response.user);
-      this.router.navigateByUrl('/')
+      this.router.navigateByUrl('/');
     })
+  }
+
+  navigateLogin() {
+    this.router.navigateByUrl('/login');
   }
 }
